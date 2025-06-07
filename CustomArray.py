@@ -29,6 +29,15 @@ class CustomArray:
             index +=1
         del self.data[self.size-1]
 
+    def insert(self, index, value):
+        if index > len(self.data):
+            raise ValueError("index out of bound")
+        for i in range(len(self.data), index, -1):
+            print(i,"i")
+            self.data[i] = self.data[i - 1]
+        self.data[index] = value
+
+
 
 if __name__ == '__main__':
     arr = CustomArray()
@@ -41,5 +50,7 @@ if __name__ == '__main__':
     print(arr.data.values())
     print(arr.delete(2))
     print(arr.data.values())
-    arr.clear()
+    #arr.clear()
+    print(arr.data.values())
+    print(arr.insert(2,0))
     print(arr.data.values())
