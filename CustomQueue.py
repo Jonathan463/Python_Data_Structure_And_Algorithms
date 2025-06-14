@@ -4,7 +4,7 @@ class CustomQueue:
         self.head = 0
 
     def dequeue(self):
-        if self.head >= len(self.data):
+        if self.is_empty():
             raise ValueError("Queue is empty")
         if self.head >= 50 and self.head >= len(self.data) // 2:
             self.clean_up()
