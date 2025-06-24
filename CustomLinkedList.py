@@ -13,13 +13,12 @@ class LinkedList:
         return self.head is None
 
     def append(self, data):
-       new_record = Node(data)
-       if self.is_empty():
-           self.head = self.tail = new_record
-       else:
+        new_record = Node(data)
+        if self.is_empty():
+            self.head = self.tail = new_record
+        else:
             self.tail.next = new_record
             self.tail = new_record
-
 
     def prepend(self, data):
         new_record = Node(data)
@@ -28,6 +27,17 @@ class LinkedList:
         else:
             new_record.next = self.head
             self.head = new_record
+
+    def delete(self, position):
+        if self.is_empty():
+            raise ValueError("Cannot delete an item from an empty linkedList")
+        else:
+            current = self.head
+            prev = None
+            for i in range(1,position):
+                prev = current
+                current = current.next
+            prev.next = current.next
 
     def to_list(self):
         elements = []
@@ -54,4 +64,8 @@ if __name__ == "__main__":
     linkedList.append(2)
     linkedList.append(4)
     linkedList.append(6)
+    linkedList.append(7)
+    linkedList.append(9)
+    linkedList.display()
+    linkedList.delete(2)
     linkedList.display()
